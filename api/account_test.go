@@ -177,11 +177,10 @@ func TestCreateAccountAPI(t *testing.T) {
 			},
 			buildStubs: func(store *mockdb.MockStore) {
 				arg := db.CreateAccountParams{
-					Owner:    user.Username,
+					Owner:    account.Owner,
 					Currency: account.Currency,
 					Balance:  0,
 				}
-
 				store.EXPECT().CreateAccount(gomock.Any(), gomock.Eq(arg)).Times(1).Return(account, nil)
 			},
 			checkResponse: func(t *testing.T, recorder *httptest.ResponseRecorder) {
