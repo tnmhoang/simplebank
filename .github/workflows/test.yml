@@ -53,10 +53,13 @@ jobs:
       - name: Create app.env for tests
         run: |
           echo "DB_SOURCE=postgresql://root:secret@localhost:5432/simple_bank?sslmode=disable" > app.env
-          echo "DB_DRIVER=postgres" > app.env
+          echo "DB_DRIVER=postgres" >> app.env
           echo "SERVER_ADDRESS=0.0.0.0:8080" >> app.env
           echo "TOKEN_SYMMETRIC_KEY=12345678901234567890123456789012" >> app.env
           echo "ACCESS_TOKEN_DURATION=15m" >> app.env
+
+      - name: Print env
+        run: cat app.env
 
       - name: Run migrations
         run: make migrateup
