@@ -33,7 +33,7 @@ jobs:
           REPOSITORY: simplebank
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker tag $REGISTRY/$REPOSITORY:$IMAGE_TAG $REGISTRY/$REPOSITORY:develop-latest
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker tag $REGISTRY/$REPOSITORY:$IMAGE_TAG $REGISTRY/$REPOSITORY:develop-latest
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
           docker push $REGISTRY/$REPOSITORY:develop-latest
